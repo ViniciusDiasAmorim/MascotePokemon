@@ -1,0 +1,17 @@
+C:\Users\User\Desktop\Programação\0.0 Portfolio\PokeApi\PokeApi\PokeApi\bin\Debug\net6.0\PokeApi.exe
+C:\Users\User\Desktop\Programação\0.0 Portfolio\PokeApi\PokeApi\PokeApi\bin\Debug\net6.0\PokeApi.deps.json
+C:\Users\User\Desktop\Programação\0.0 Portfolio\PokeApi\PokeApi\PokeApi\bin\Debug\net6.0\PokeApi.runtimeconfig.json
+C:\Users\User\Desktop\Programação\0.0 Portfolio\PokeApi\PokeApi\PokeApi\bin\Debug\net6.0\PokeApi.dll
+C:\Users\User\Desktop\Programação\0.0 Portfolio\PokeApi\PokeApi\PokeApi\bin\Debug\net6.0\PokeApi.pdb
+C:\Users\User\Desktop\Programação\0.0 Portfolio\PokeApi\PokeApi\PokeApi\obj\Debug\net6.0\PokeApi.csproj.AssemblyReference.cache
+C:\Users\User\Desktop\Programação\0.0 Portfolio\PokeApi\PokeApi\PokeApi\obj\Debug\net6.0\PokeApi.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\User\Desktop\Programação\0.0 Portfolio\PokeApi\PokeApi\PokeApi\obj\Debug\net6.0\PokeApi.AssemblyInfoInputs.cache
+C:\Users\User\Desktop\Programação\0.0 Portfolio\PokeApi\PokeApi\PokeApi\obj\Debug\net6.0\PokeApi.AssemblyInfo.cs
+C:\Users\User\Desktop\Programação\0.0 Portfolio\PokeApi\PokeApi\PokeApi\obj\Debug\net6.0\PokeApi.csproj.CoreCompileInputs.cache
+C:\Users\User\Desktop\Programação\0.0 Portfolio\PokeApi\PokeApi\PokeApi\obj\Debug\net6.0\PokeApi.dll
+C:\Users\User\Desktop\Programação\0.0 Portfolio\PokeApi\PokeApi\PokeApi\obj\Debug\net6.0\refint\PokeApi.dll
+C:\Users\User\Desktop\Programação\0.0 Portfolio\PokeApi\PokeApi\PokeApi\obj\Debug\net6.0\PokeApi.pdb
+C:\Users\User\Desktop\Programação\0.0 Portfolio\PokeApi\PokeApi\PokeApi\obj\Debug\net6.0\PokeApi.genruntimeconfig.cache
+C:\Users\User\Desktop\Programação\0.0 Portfolio\PokeApi\PokeApi\PokeApi\obj\Debug\net6.0\ref\PokeApi.dll
+C:\Users\User\Desktop\Programação\0.0 Portfolio\PokeApi\PokeApi\PokeApi\bin\Debug\net6.0\Newtonsoft.Json.dll
+C:\Users\User\Desktop\Programação\0.0 Portfolio\PokeApi\PokeApi\PokeApi\obj\Debug\net6.0\PokeApi.csproj.CopyComplete

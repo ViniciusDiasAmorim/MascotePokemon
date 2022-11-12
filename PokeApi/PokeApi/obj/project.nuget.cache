@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "mpvkPhPLXmH0lijxajHAAH6oZRUxqwDJe2a6oOBE2ccopAzfkk7CxZWeuY1DN5rztSMOuOmruZ7PhpLboqH7zw==",
+  "dgSpecHash": "gK3vhpA0atAN0lvilV5Yq84yGVAQBdWYP9Ltghz2tO7/RgEW7LWJmdx8pZET3stZV33TBwETpAy677lfg9AsHg==",
   "success": true,
   "projectFilePath": "C:\\Users\\User\\Desktop\\Programação\\0.0 Portfolio\\PokeApi\\PokeApi\\PokeApi\\PokeApi.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\User\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512"
+  ],
   "logs": []
 }
