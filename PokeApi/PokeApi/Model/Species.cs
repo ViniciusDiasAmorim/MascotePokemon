@@ -2,7 +2,7 @@
 
 namespace PokeApi.Models
 {
-    public class SpeciesBase
+    public class Species
     {
         [JsonProperty("name")]
         public string Name { get; set; }

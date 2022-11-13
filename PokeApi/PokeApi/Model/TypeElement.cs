@@ -2,7 +2,7 @@
 
 namespace PokeApi.Models
 {
-    public class TypeElementBase
+    public class TypeElement
     {
         [JsonProperty("slot")]
         public long Slot { get; set; }

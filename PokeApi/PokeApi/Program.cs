@@ -7,8 +7,8 @@ Console.WriteLine("Bem Vindo");
 Console.WriteLine("Deseja ver os Pokemons? 1 - Sim - 2 - Sair.");
 
 string inicio = Console.ReadLine();
-Console.WriteLine("------------------------------------------------");
 
+Console.WriteLine("------------------------------------------------");
 
 while (inicio != "2")
 {
@@ -47,6 +47,7 @@ while (inicio != "2")
         if (pokemonsEncontrados.TryGetValue(pokeId, out var poke))
         {
             var responseDadosDoPokemon = await client.GetAsync(poke.Url);
+
             if (responseDadosDoPokemon.IsSuccessStatusCode)
             {
                 var contentDadosDoPokemon = await responseDadosDoPokemon.Content.ReadAsStringAsync();
@@ -56,19 +57,15 @@ while (inicio != "2")
                 Console.WriteLine($"Altura: {pokemon.Height}");
                 Console.WriteLine($"Peso: {pokemon.Weight}");
                 Console.WriteLine($"Habilidade:");
-                foreach(var p in pokemon.Abilities)
+                foreach (var p in pokemon.Abilities)
                 {
                     Console.WriteLine(p.AbilityAbility.Name);
                 }
             }
         }
-
     }
     Console.WriteLine("Deseja ver mais Pokemons? 1 - Sim - 2 - Sair.");
 
     inicio = Console.ReadLine();
 }
 Console.WriteLine("Obrigado por utilizar o Programa.");
-
-
-
