@@ -1,30 +1,74 @@
 ﻿using Newtonsoft.Json;
-using PokeApi;
+using PokeApi.Model;
+using PokeApi.Models;
 
-HttpClient client = new HttpClient();
+Console.WriteLine("Bem Vindo");
 
-string url = "https://pokeapi.co/api/v2/pokemon/";
+Console.WriteLine("Deseja ver os Pokemons? 1 - Sim - 2 - Sair.");
 
-var response = await client.GetAsync(url);
+string inicio = Console.ReadLine();
+Console.WriteLine("------------------------------------------------");
 
-var content = await response.Content.ReadAsStringAsync();
 
-dynamic responseContent = JsonConvert.DeserializeObject(content);
-
-List<Pokemon> pokemons = new List<Pokemon>();
-
-foreach(var item in responseContent.results)
+while (inicio != "2")
 {
-    Pokemon result = new Pokemon()
+    HttpClient client = new HttpClient();
+
+    string url = "https://pokeapi.co/api/v2/pokemon/";
+
+    var response = await client.GetAsync(url);
+
+    if (response.IsSuccessStatusCode)
     {
-        Name = item.name,
-        Url = item.url
-    };
+        var content = await response.Content.ReadAsStringAsync();
 
-    pokemons.Add(result);
-}
+        var search = JsonConvert.DeserializeObject<Search>(content);
 
-foreach(var item in pokemons)
-{
-    Console.WriteLine(item.Name);
+        Dictionary<int, Species> pokemonsEncontrados = new Dictionary<int, Species>();
+
+        int id = 1;
+
+        foreach (var item in search.Results)
+        {
+            pokemonsEncontrados.Add(id, item);
+            id++;
+        }
+
+        foreach (var item in pokemonsEncontrados)
+        {
+            Console.WriteLine($"{item.Key} - {item.Value.Name}");
+            Console.WriteLine("------------------------------------------------");
+        }
+
+        Console.WriteLine("Escolha seu pokemon digitando o numero ao qual ele corresponde");
+
+        int pokeId = int.Parse(Console.ReadLine());
+
+        if (pokemonsEncontrados.TryGetValue(pokeId, out var poke))
+        {
+            var responseDadosDoPokemon = await client.GetAsync(poke.Url);
+            if (responseDadosDoPokemon.IsSuccessStatusCode)
+            {
+                var contentDadosDoPokemon = await responseDadosDoPokemon.Content.ReadAsStringAsync();
+                var pokemon = JsonConvert.DeserializeObject<Pokemon>(contentDadosDoPokemon);
+
+                Console.WriteLine($"Nome: {pokemon.Name}");
+                Console.WriteLine($"Altura: {pokemon.Height}");
+                Console.WriteLine($"Peso: {pokemon.Weight}");
+                Console.WriteLine($"Habilidade:");
+                foreach(var p in pokemon.Abilities)
+                {
+                    Console.WriteLine(p.AbilityAbility.Name);
+                }
+            }
+        }
+
+    }
+    Console.WriteLine("Deseja ver mais Pokemons? 1 - Sim - 2 - Sair.");
+
+    inicio = Console.ReadLine();
 }
+Console.WriteLine("Obrigado por utilizar o Programa.");
+
+
+

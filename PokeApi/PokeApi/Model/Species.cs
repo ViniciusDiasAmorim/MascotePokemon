@@ -1,8 +1,8 @@
 ﻿using Newtonsoft.Json;
 
-namespace PokeApi
+namespace PokeApi.Models
 {
-    public partial class Pokemon
+    public class SpeciesBase
     {
         [JsonProperty("name")]
         public string Name { get; set; }
