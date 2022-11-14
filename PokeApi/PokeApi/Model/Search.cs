@@ -3,7 +3,7 @@ using PokeApi.Models;
 
 namespace PokeApi.Model
 {
-    internal class Search
+    public class Search
     {
         [JsonProperty("count")]
         public long Count { get; set; }
@@ -12,7 +12,7 @@ namespace PokeApi.Model
         public Uri Next { get; set; }
 
         [JsonProperty("previous")]
-        public object Previous { get; set; }
+        public Uri Previous { get; set; }
 
         [JsonProperty("results")]
         public List<Species> Results { get; set; }
