@@ -7,7 +7,7 @@ namespace PokeApi.Services
 {
     public class PokemonService
     {
-        public async Task<Search> SearchPokemonAsync(Uri url)
+        public async Task<Search> SearchPokemon(Uri url)
         {
             if (url == null)
             {

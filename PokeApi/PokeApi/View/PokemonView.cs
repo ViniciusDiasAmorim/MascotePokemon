@@ -66,12 +66,16 @@ namespace PokeApi.View
             Console.WriteLine();
             Console.WriteLine($"2 - Adotar o {pokemon.Name}");
             Console.WriteLine();
+            Console.WriteLine("3 - Para voltar aos Pokemons.");
+            Console.WriteLine();
+            Console.WriteLine("4 - Para voltar ao menu principal.");
             
             return pokemon;
         }
         public void InformacaoDoPokemon(Pokemon pokemon)
         {
             Console.Clear();
+            Console.WriteLine($"--------------------{pokemon.Name}--------------------");
             Console.WriteLine($"Nome: {pokemon.Name}");
             Console.WriteLine($"Altura: {pokemon.Height}");
             Console.WriteLine($"Peso: {pokemon.Weight}");
@@ -85,12 +89,46 @@ namespace PokeApi.View
                     Console.Write($" {p.AbilityAbility.Name} |");
             }
             Console.WriteLine();
+            Console.WriteLine("Tipos do Pokemon: ");
+            foreach( var p in pokemon.Types)
+            {
+                Console.WriteLine($"{p.Type.Name}");
+            }
             Console.WriteLine();
             Console.WriteLine($"Deseja Adotar o {pokemon.Name}");
             Console.WriteLine();
             Console.WriteLine("1 -  Sim");
             Console.WriteLine();
             Console.WriteLine("2 - Ver outros pokemons");
+        }
+
+        public void AdocaoDoPokemon(PokemonCapturado pokemon)
+        {
+            Console.Clear();
+            Console.WriteLine($"--------------------Parabens Voce Adotou o {pokemon.Name}--------------------");
+            Console.WriteLine($"Nome: {pokemon.Name}");
+            Console.WriteLine($"Altura: {pokemon.Height}");
+            Console.WriteLine($"Peso: {pokemon.Weight}");
+            Console.WriteLine($"Habilidades:");
+            foreach (var p in pokemon.Abilities)
+            {
+                if (pokemon.Abilities[0] == p)
+                    Console.Write($"{p.AbilityAbility.Name} |");
+
+                else
+                    Console.Write($" {p.AbilityAbility.Name} |");
+            }
+            Console.WriteLine();
+            Console.WriteLine("Tipos do Pokemon: ");
+            foreach (var p in pokemon.Types)
+            {
+                Console.WriteLine($"{p.Type.Name}");
+            }
+            Console.WriteLine($"Saude:{pokemon.Saude}");
+
+            Console.WriteLine($"Humor:{pokemon.Humor}");
+
+            Console.WriteLine($"Fome: {pokemon.Fome}");
         }
     }
 }

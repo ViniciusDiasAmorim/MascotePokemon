@@ -2,7 +2,7 @@
 
 namespace PokeApi.Models
 {
-    public partial class Pokemon
+    public  class Pokemon
     {
         [JsonProperty("abilities")]
         public List<Ability> Abilities { get; set; }
