@@ -44,6 +44,7 @@ while (rodaPrograma)
                         case "2": search = await pokemonService.SearchPokemonAsync(search.Previous); break;
 
                         case "3": buscaMascote = false;
+
                             Pokemon pokemonInfo = new Pokemon();
 
                             Species pokemon = pokemonView.EscolhePokemonView(pokemonsEncontrados);

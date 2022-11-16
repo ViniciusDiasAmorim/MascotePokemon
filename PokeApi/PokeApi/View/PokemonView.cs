@@ -78,8 +78,19 @@ namespace PokeApi.View
             Console.WriteLine($"Habilidades:");
             foreach (var p in pokemon.Abilities)
             {
-                Console.WriteLine(p.AbilityAbility.Name);
+                if (pokemon.Abilities[0] == p) 
+                    Console.Write($"{p.AbilityAbility.Name} |");
+
+                else 
+                    Console.Write($" {p.AbilityAbility.Name} |");
             }
+            Console.WriteLine();
+            Console.WriteLine();
+            Console.WriteLine($"Deseja Adotar o {pokemon.Name}");
+            Console.WriteLine();
+            Console.WriteLine("1 -  Sim");
+            Console.WriteLine();
+            Console.WriteLine("2 - Ver outros pokemons");
         }
     }
 }
