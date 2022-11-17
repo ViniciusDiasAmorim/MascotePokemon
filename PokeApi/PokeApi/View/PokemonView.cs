@@ -12,6 +12,7 @@ namespace PokeApi.View
     {
         public void MenuView(string nome)
         {
+            Console.Clear();
             Console.WriteLine("--------------------Menu--------------------");
             Console.WriteLine($"{nome} oque gostaria de Fazer?");
             Console.WriteLine("1 - Ver os Pokemons.");
@@ -21,6 +22,7 @@ namespace PokeApi.View
 
         public void MostraPokemonsView(Dictionary<int, Species> pokemonsEncontrados, Search search)
         {
+            Console.Clear();
             Console.WriteLine("--------------------Pokemons Encontrados--------------------");
 
             foreach (var item in pokemonsEncontrados)
@@ -29,6 +31,8 @@ namespace PokeApi.View
             }
             Console.WriteLine();
             Console.WriteLine("Encontrou algum Pokemon que voce deseja?");
+            Console.WriteLine();
+            Console.WriteLine("0 - Para voltar ao menu principal.");
             Console.WriteLine();
             if (search.Next != null)
             {
@@ -40,7 +44,7 @@ namespace PokeApi.View
                 Console.WriteLine("2 - Caso deseje voltar para a pagina anterior.");
             }
             Console.WriteLine();
-            Console.WriteLine("3 - Para escolher um Pokemon desta lista");
+            Console.WriteLine("3 - Para escolher um Pokemon desta lista.");      
         }
 
         public Species EscolhePokemonView(Dictionary<int, Species> pokemonsEncontrados)
@@ -124,10 +128,11 @@ namespace PokeApi.View
             {
                 Console.WriteLine($"{p.Type.Name}");
             }
+            Console.WriteLine();
             Console.WriteLine($"Saude:{pokemon.Saude}");
-
+            Console.WriteLine();
             Console.WriteLine($"Humor:{pokemon.Humor}");
-
+            Console.WriteLine();
             Console.WriteLine($"Fome: {pokemon.Fome}");
         }
     }

@@ -21,7 +21,6 @@ namespace PokeApi.Model
 
         public void AlimentarMascote()
         {
-         
         }
 
         public void BrincarMascote()
