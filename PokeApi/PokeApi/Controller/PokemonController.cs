@@ -27,14 +27,18 @@ namespace PokeApi.Controller
             return opcao;
         }
 
-        public async Task<int> ExibePokemons()
+        public bool ExibePokemons()
         {
             bool buscaMascote = true;
             Search search = Task.Run(() => pokemonService.SearchPokemon(null)).Result;
 
             while (buscaMascote)
             {
-                if (search == null) return 4;
+                if (search == null)
+                {
+                    Console.WriteLine("Ocorreu um problema na busca dos Pokemons.");
+                    return false;
+                }
 
                 var pokemonsEncontrados = Task.Run(() => pokemonService.GetAllPokemon(search.Results)).Result;
 
@@ -42,17 +46,74 @@ namespace PokeApi.Controller
 
                 int opcao;
 
-                if (!int.TryParse(Console.ReadLine(), out opcao)) return 4;
+                if (!int.TryParse(Console.ReadLine(), out opcao))
+                {
+                    Console.WriteLine("Acho que voce digitou um valor fora do esperado.");
+                    return false;
+                }
 
                 switch (opcao)
                 {
-                    case 0: return 0;
+                    case 0: return false;
                     case 1: search = Task.Run(() => pokemonService.SearchPokemon(search.Next)).Result; break;
                     case 2: search = Task.Run(() => pokemonService.SearchPokemon(search.Previous)).Result; break;
-                    case 3: return 3;
+                    case 3:
+                        Species pokemon = pokemonView.EscolhePokemonView(pokemonsEncontrados);
+
+                        int optPokemon;
+
+                        if (!int.TryParse(Console.ReadLine(), out optPokemon))
+                        {
+                            Console.WriteLine("Acho que voce digitou um valor fora do esperado.");
+                            return false;
+                        }
+
+                        if (optPokemon == 1)
+                        {
+                            Pokemon pokemonEscolhido = Task.Run(() => pokemonService.GetPokemon(pokemon.Url)).Result;
+                            
+                            pokemonView.InformacaoDoPokemon(pokemonEscolhido);
+
+                            int AdotaOuVolta;
+
+                            if (!int.TryParse(Console.ReadLine(), out AdotaOuVolta))
+                            {
+                                Console.WriteLine("Acho que voce digitou um valor fora do esperado.");
+                                return false;
+                            }
+
+                            if (AdotaOuVolta == 1) Adota(pokemonService, pokemonView, pokemon);
+                        }
+
+                        if (optPokemon == 2)
+                        {
+                            Adota(pokemonService, pokemonView, pokemon);
+                            return true;
+                        }
+
+                        if (optPokemon == 0) return false;
+                        break;
                 }
             }
-            return 4;
+            return false;
+        }
+        static void Adota(PokemonService pokemonService, PokemonView pokemonView, Species pokemon)
+        {
+
+            Pokemon pokemonInfo = Task.Run(() => pokemonService.GetPokemon(pokemon.Url)).Result;
+           
+            PokemonCapturado pokemonCapturado = new PokemonCapturado()
+            {
+                Abilities = pokemonInfo.Abilities,
+                Height = pokemonInfo.Height,
+                Id = pokemonInfo.Id,
+                Name = pokemonInfo.Name,
+                Species = pokemonInfo.Species,
+                Types = pokemonInfo.Types,
+                Weight = pokemonInfo.Weight,
+            };
+
+            pokemonView.AdocaoDoPokemon(pokemonCapturado);
         }
     }
 }

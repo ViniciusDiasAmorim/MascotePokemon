@@ -5,6 +5,7 @@ string nome = Console.ReadLine();
 bool rodaPrograma = true;
 
 PokemonController pokemonController = new PokemonController();
+
 while (rodaPrograma)
 {
     int opcaoDoUsuario = pokemonController.Menu(nome);
@@ -16,18 +17,7 @@ while (rodaPrograma)
             break;
 
         case 1:
-            
-                int resultado = Task.Run(() => pokemonController.ExibePokemons()).Result;
-
-                if (resultado == 4)
-                {
-                    Console.WriteLine("Ocorreu um problema... voce sera redirecionado para o menu.");
-                }
-                else
-                {
-
-                }
-            
+            bool resultado = Task.Run(() => pokemonController.ExibePokemons()).Result;
             break;
 
         case 2:

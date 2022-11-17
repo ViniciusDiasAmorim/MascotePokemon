@@ -32,8 +32,6 @@ namespace PokeApi.View
             Console.WriteLine();
             Console.WriteLine("Encontrou algum Pokemon que voce deseja?");
             Console.WriteLine();
-            Console.WriteLine("0 - Para voltar ao menu principal.");
-            Console.WriteLine();
             if (search.Next != null)
             {
                 Console.WriteLine("1 - Caso deseje avançar para a proxima pagina.");
@@ -44,11 +42,15 @@ namespace PokeApi.View
                 Console.WriteLine("2 - Caso deseje voltar para a pagina anterior.");
             }
             Console.WriteLine();
-            Console.WriteLine("3 - Para escolher um Pokemon desta lista.");      
+            Console.WriteLine("3 - Para escolher um Pokemon desta lista.");
+            Console.WriteLine();
+            Console.WriteLine("0 - Para voltar ao menu principal.");
         }
 
         public Species EscolhePokemonView(Dictionary<int, Species> pokemonsEncontrados)
         {
+            Console.Clear();
+
             foreach (var item in pokemonsEncontrados)
             {
                 Console.WriteLine($"{item.Key} - {item.Value.Name}");
@@ -68,11 +70,11 @@ namespace PokeApi.View
             Console.WriteLine();
             Console.WriteLine($"1 - Saber mais sobre o {pokemon.Name}");
             Console.WriteLine();
-            Console.WriteLine($"2 - Adotar o {pokemon.Name}");
+            Console.WriteLine($"2 - Capturar o {pokemon.Name}");
             Console.WriteLine();
             Console.WriteLine("3 - Para voltar aos Pokemons.");
             Console.WriteLine();
-            Console.WriteLine("4 - Para voltar ao menu principal.");
+            Console.WriteLine("0 - Para voltar ao menu principal.");
             
             return pokemon;
         }
@@ -134,6 +136,9 @@ namespace PokeApi.View
             Console.WriteLine($"Humor:{pokemon.Humor}");
             Console.WriteLine();
             Console.WriteLine($"Fome: {pokemon.Fome}");
+            Console.WriteLine();
+            Console.WriteLine("Digite qualquer tecla para voltar ao menu");
+            Console.ReadLine();
         }
     }
 }

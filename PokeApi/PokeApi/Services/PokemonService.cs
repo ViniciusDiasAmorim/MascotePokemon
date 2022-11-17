@@ -30,7 +30,7 @@ namespace PokeApi.Services
             return null;
         }
 
-        public async Task<Dictionary<int, Species>> GetAllPokemon(List<Species> species)
+        public Dictionary<int, Species> GetAllPokemon(List<Species> species)
         {
             Dictionary<int, Species> pokemonsEncontrados = new Dictionary<int, Species>();
 
@@ -59,6 +59,7 @@ namespace PokeApi.Services
             if (responseDadosDoPokemon.IsSuccessStatusCode)
             {
                 var contentDadosDoPokemon = await responseDadosDoPokemon.Content.ReadAsStringAsync();
+               
                 var pokemon = JsonConvert.DeserializeObject<Pokemon>(contentDadosDoPokemon);
 
                 return pokemon;
