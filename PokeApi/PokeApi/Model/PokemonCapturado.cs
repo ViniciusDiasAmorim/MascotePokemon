@@ -21,15 +21,20 @@ namespace PokeApi.Model
 
         public void AlimentarMascote()
         {
+            Saude++;
+            Humor++;
+            Fome--;
         }
 
         public void BrincarMascote()
         {
-           
+            Humor++;
+            Fome++;
         }
 
-        public void SaudeMascote()
+        public void Batalhar()
         {
+
         }
     }
 }

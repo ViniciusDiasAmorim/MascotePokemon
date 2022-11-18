@@ -21,10 +21,9 @@ while (rodaPrograma)
             break;
 
         case 2:
-            Console.WriteLine("Pokemons Adotados");
+            Console.WriteLine("");
             break;
 
         case 3: rodaPrograma = false; break;
     }
-
 }

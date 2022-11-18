@@ -16,7 +16,7 @@ namespace PokeApi.View
             Console.WriteLine("--------------------Menu--------------------");
             Console.WriteLine($"{nome} oque gostaria de Fazer?");
             Console.WriteLine("1 - Ver os Pokemons.");
-            Console.WriteLine("2 - Ver os Pokemons que voce capturou.");
+            Console.WriteLine("2 - Interagir com os Pokemons que voce capturou.");
             Console.WriteLine("3 - Sair.");
         }
 
@@ -78,7 +78,7 @@ namespace PokeApi.View
             
             return pokemon;
         }
-        public void InformacaoDoPokemon(Pokemon pokemon)
+        public void InformacaoDoPokemonView(Pokemon pokemon)
         {
             Console.Clear();
             Console.WriteLine($"--------------------{pokemon.Name}--------------------");
@@ -108,7 +108,7 @@ namespace PokeApi.View
             Console.WriteLine("2 - Ver outros pokemons");
         }
 
-        public void AdocaoDoPokemon(PokemonCapturado pokemon)
+        public void AdocaoDoPokemonView(PokemonCapturado pokemon)
         {
             Console.Clear();
             Console.WriteLine($"--------------------Parabens Voce Adotou o {pokemon.Name}--------------------");
@@ -139,6 +139,12 @@ namespace PokeApi.View
             Console.WriteLine();
             Console.WriteLine("Digite qualquer tecla para voltar ao menu");
             Console.ReadLine();
+        }
+        public void MostraPokemonsCapturadosView(Dictionary<int, Species> pokemon)
+        {
+            Console.WriteLine("--------------------Seus Pokemons--------------------");
+
+
         }
     }
 }

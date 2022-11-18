@@ -15,7 +15,7 @@ namespace PokeApi.Controller
     {
         PokemonService pokemonService = new PokemonService();
         PokemonView pokemonView = new PokemonView();
-
+        List<PokemonCapturado> listaCapturados;
         public int Menu(string nome)
         {
             pokemonView.MenuView(nome);
@@ -40,7 +40,7 @@ namespace PokeApi.Controller
                     return false;
                 }
 
-                var pokemonsEncontrados = Task.Run(() => pokemonService.GetAllPokemon(search.Results)).Result;
+                var pokemonsEncontrados = Task.Run(() => pokemonService.ListaPokemon(search.Results)).Result;
 
                 pokemonView.MostraPokemonsView(pokemonsEncontrados, search);
 
@@ -71,8 +71,8 @@ namespace PokeApi.Controller
                         if (optPokemon == 1)
                         {
                             Pokemon pokemonEscolhido = Task.Run(() => pokemonService.GetPokemon(pokemon.Url)).Result;
-                            
-                            pokemonView.InformacaoDoPokemon(pokemonEscolhido);
+
+                            pokemonView.InformacaoDoPokemonView(pokemonEscolhido);
 
                             int AdotaOuVolta;
 
@@ -82,12 +82,18 @@ namespace PokeApi.Controller
                                 return false;
                             }
 
-                            if (AdotaOuVolta == 1) Adota(pokemonService, pokemonView, pokemon);
+                            if (AdotaOuVolta == 1)
+                            {
+                                var pokemonCapturado = Adota(pokemonService, pokemonView, pokemon);
+                                listaCapturados.Add(pokemonCapturado);
+                                return true;
+                            }
                         }
 
                         if (optPokemon == 2)
                         {
-                            Adota(pokemonService, pokemonView, pokemon);
+                            var pokemonCapturado = Adota(pokemonService, pokemonView, pokemon);
+                            listaCapturados.Add(pokemonCapturado);
                             return true;
                         }
 
@@ -97,11 +103,17 @@ namespace PokeApi.Controller
             }
             return false;
         }
-        static void Adota(PokemonService pokemonService, PokemonView pokemonView, Species pokemon)
+
+        public void ExibePokemonsCapturados()
+        {
+            
+        }
+
+        static PokemonCapturado Adota(PokemonService pokemonService, PokemonView pokemonView, Species pokemon)
         {
 
             Pokemon pokemonInfo = Task.Run(() => pokemonService.GetPokemon(pokemon.Url)).Result;
-           
+
             PokemonCapturado pokemonCapturado = new PokemonCapturado()
             {
                 Abilities = pokemonInfo.Abilities,
@@ -113,7 +125,10 @@ namespace PokeApi.Controller
                 Weight = pokemonInfo.Weight,
             };
 
-            pokemonView.AdocaoDoPokemon(pokemonCapturado);
+            pokemonView.AdocaoDoPokemonView(pokemonCapturado);
+
+            return pokemonCapturado;
+
         }
     }
 }

@@ -30,7 +30,7 @@ namespace PokeApi.Services
             return null;
         }
 
-        public Dictionary<int, Species> GetAllPokemon(List<Species> species)
+        public Dictionary<int, Species> ListaPokemon(List<Species> species)
         {
             Dictionary<int, Species> pokemonsEncontrados = new Dictionary<int, Species>();
 
@@ -47,11 +47,6 @@ namespace PokeApi.Services
 
         public async Task<Pokemon> GetPokemon(Uri url)
         {
-            if (url == null)
-            {
-                url = new Uri("https://pokeapi.co/api/v2/pokemon/");
-            }
-
             using HttpClient client = new HttpClient();
 
             var responseDadosDoPokemon = await client.GetAsync(url);
