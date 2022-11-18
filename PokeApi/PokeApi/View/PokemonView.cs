@@ -140,11 +140,55 @@ namespace PokeApi.View
             Console.WriteLine("Digite qualquer tecla para voltar ao menu");
             Console.ReadLine();
         }
-        public void MostraPokemonsCapturadosView(Dictionary<int, Species> pokemon)
+        public void MostraPokemonsCapturadosView(List<PokemonCapturado> pokemonCapturados)
         {
+            Console.Clear();
             Console.WriteLine("--------------------Seus Pokemons--------------------");
 
+            int i = 0;
+            foreach(var p in pokemonCapturados)
+            {
+                i++;
+                Console.WriteLine($"{i} - {p.Name}");
+            }
 
+            Console.WriteLine("Digite o numero do pokemon com o qual deseja interagir.");
+        }
+        public void InteracaoComPetView(PokemonCapturado pokemon)
+        {
+            Console.Clear();
+            Console.WriteLine($"--------------------{pokemon.Name}--------------------");
+            Console.WriteLine($"Nome: {pokemon.Name}");
+            Console.WriteLine($"Altura: {pokemon.Height}");
+            Console.WriteLine($"Peso: {pokemon.Weight}");
+            Console.WriteLine($"Data de Captura: {pokemon.DataDeCaptura}");
+            Console.WriteLine($"Habilidades:");
+            foreach (var p in pokemon.Abilities)
+            {
+                if (pokemon.Abilities[0] == p)
+                    Console.Write($"{p.AbilityAbility.Name} |");
+
+                else
+                    Console.Write($" {p.AbilityAbility.Name} |");
+            }
+            Console.WriteLine();
+            Console.WriteLine("Tipos do Pokemon: ");
+            foreach (var p in pokemon.Types)
+            {
+                Console.WriteLine($"{p.Type.Name}");
+            }
+            Console.WriteLine();
+            Console.WriteLine($"Saude:{pokemon.Saude}");
+            Console.WriteLine();
+            Console.WriteLine($"Humor:{pokemon.Humor}");
+            Console.WriteLine();
+            Console.WriteLine($"Fome: {pokemon.Fome}");
+            Console.WriteLine();
+            Console.WriteLine($"Como deseja interagir com o {pokemon.Name}");
+            Console.WriteLine($"1 - Alimentar o {pokemon.Name}");
+            Console.WriteLine($"2 - Brincar com o {pokemon.Name}");
+            Console.WriteLine($"3 - Batalhar");
+            Console.WriteLine($"0 - Para sair.");
         }
     }
 }

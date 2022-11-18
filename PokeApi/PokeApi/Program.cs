@@ -17,11 +17,15 @@ while (rodaPrograma)
             break;
 
         case 1:
-            bool resultado = Task.Run(() => pokemonController.ExibePokemons()).Result;
+             var resultado = Task.Run(() => pokemonController.ExibePokemons()).Result;
             break;
 
         case 2:
-            Console.WriteLine("");
+            pokemonController.ExibePokemonsCapturados();
+            Console.WriteLine("Pressione qualquer tecla.");
+            Console.ReadLine();
+            Console.Clear();
+
             break;
 
         case 3: rodaPrograma = false; break;

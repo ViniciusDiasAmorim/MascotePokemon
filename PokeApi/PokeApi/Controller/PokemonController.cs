@@ -2,12 +2,6 @@
 using PokeApi.Models;
 using PokeApi.Services;
 using PokeApi.View;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PokeApi.Controller
 {
@@ -15,7 +9,7 @@ namespace PokeApi.Controller
     {
         PokemonService pokemonService = new PokemonService();
         PokemonView pokemonView = new PokemonView();
-        List<PokemonCapturado> listaCapturados;
+        List<PokemonCapturado> listaCapturados = new List<PokemonCapturado>();
         public int Menu(string nome)
         {
             pokemonView.MenuView(nome);
@@ -106,7 +100,56 @@ namespace PokeApi.Controller
 
         public void ExibePokemonsCapturados()
         {
-            
+            if (listaCapturados.Count == 0)
+            {
+                Console.WriteLine("Voce nao capturou nenhum pokemon para interagir.");
+                return;
+            }
+            bool interecaoComPokemon = true;
+
+            pokemonView.MostraPokemonsCapturadosView(listaCapturados);
+
+            int pokemonEscolhido;
+
+            if (!int.TryParse(Console.ReadLine(), out pokemonEscolhido))
+            {
+                Console.WriteLine("Acho que voce digitou um valor inesperado.");
+                return;
+            }
+            while (interecaoComPokemon)
+            {
+                PokemonCapturado pokemonCapturado = listaCapturados[pokemonEscolhido - 1];
+
+                pokemonView.InteracaoComPetView(pokemonCapturado);
+
+                int opcaoDeInteracao;
+
+                if (!int.TryParse(Console.ReadLine(), out opcaoDeInteracao))
+                {
+                    Console.WriteLine("Voce digitou um valor fora do esperado.");
+                    return;
+                }
+
+                switch (opcaoDeInteracao)
+                {
+                    case 0: return;
+                    case 1:
+                        pokemonCapturado.AlimentarMascote();
+                        pokemonView.InteracaoComPetView(pokemonCapturado);
+                        
+                        break;
+                    case 2:
+                        pokemonCapturado.BrincarMascote();
+                        pokemonView.InteracaoComPetView(pokemonCapturado);
+                        
+                        break;
+                    case 3:
+                        pokemonCapturado.Batalhar();
+                        pokemonView.InteracaoComPetView(pokemonCapturado);
+                        break;
+                    default: Console.WriteLine("Voce nao digitou uma das opçoes possiveis"); break;
+                }
+            }
         }
 
         static PokemonCapturado Adota(PokemonService pokemonService, PokemonView pokemonView, Species pokemon)
