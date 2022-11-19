@@ -6,5 +6,6 @@
 O projeto foi construido todo para console e basicamente o projeto funciona como um jogo no qual o usuario pode capturar pokemons e se divertir testando a sorte encontrando pokemons para
 batalhar.
 
-### Imagens do Projeto
+### Ilustração
 
+<img src="https://github.com/ViniciusDiasAmorim/ViniciusDiasAmorim/blob/main/src/MascotePokemonGif.gif" />
