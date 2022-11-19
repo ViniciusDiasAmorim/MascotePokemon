@@ -24,8 +24,8 @@ namespace PokeApi.Model
         {
             Console.Clear();
             int modificador = random.Next(1, 10);
-            
-            if(Saude + modificador < 100)
+
+            if (Saude + modificador < 100)
             {
                 Console.WriteLine($"Ganho na Saude = {Saude} ++ {Saude + modificador}");
             }
@@ -34,8 +34,8 @@ namespace PokeApi.Model
                 Console.WriteLine($"Ganho na Saude = {Saude} ++ {Saude + modificador}");
                 Console.WriteLine($"A saude do {Name} eh 100");
             }
-          
-            if(Fome - modificador > 0)
+
+            if (Fome - modificador > 0)
             {
                 Console.WriteLine($"Diminuiçao na Fome =  {Fome} -- {Fome - modificador}");
             }
@@ -49,9 +49,9 @@ namespace PokeApi.Model
             Fome -= modificador;
 
             if (Saude > 100) Saude = 100;
-                   
+
             if (Fome < 0) Fome = 0;
-            
+
 
             Console.WriteLine("Pressione qualquer tecla para voltar.");
             Console.ReadLine();
@@ -62,7 +62,7 @@ namespace PokeApi.Model
 
             int modificador = random.Next(1, 10);
 
-            if(Humor + modificador < 100)
+            if (Humor + modificador < 100)
             {
                 Console.WriteLine($"Ganho de Humor = {Humor} ++ {Humor + modificador}");
             }
@@ -71,8 +71,8 @@ namespace PokeApi.Model
                 Console.WriteLine($"Ganho de Humor = {Humor} ++ {Humor + modificador}");
                 Console.WriteLine($"O humor do {Name} eh 100");
             }
-            
-            if(Fome < 100)
+
+            if (Fome < 100)
             {
                 Console.WriteLine($"Ganho de Fome =  {Fome}  ++  {Fome + modificador}");
             }
@@ -85,8 +85,8 @@ namespace PokeApi.Model
             Humor += modificador;
             Fome += modificador;
 
-            if(Humor > 100) Humor = 100;
-            if(Fome > 100) Fome = 100;
+            if (Humor > 100) Humor = 100;
+            if (Fome > 100) Fome = 100;
 
             Console.WriteLine("Pressione qualquer tecla para voltar.");
             Console.ReadLine();
@@ -95,49 +95,66 @@ namespace PokeApi.Model
         public void Batalhar()
         {
             Console.Clear();
-
-            int idPokemonRandomico = random.Next(1, 1154);
-
-            Uri urlPokemonEncontrado = new Uri($"https://pokeapi.co/api/v2/pokemon/{idPokemonRandomico}");
-
-            PokemonService pokemonService = new PokemonService();
-
-            Pokemon pokemonEncontrado = Task.Run(() => pokemonService.GetPokemon(urlPokemonEncontrado)).Result;
-
-            int danosSofridos = random.Next(5, 50);
-
-            Console.WriteLine($"Voce encontrou um {pokemonEncontrado.Name} !!!!");
-
-            if (Saude - danosSofridos <= 0)
+            try
             {
-                Console.WriteLine($"Oh nao o {Name} foi derrotado");
+                int idPokemonRandomico = random.Next(1, 1154);
+
+                Uri urlPokemonEncontrado = new Uri($"https://pokeapi.co/api/v2/pokemon/{idPokemonRandomico}");
+
+                PokemonService pokemonService = new PokemonService();
+
+                Pokemon pokemonEncontrado = new Pokemon();
+
+                pokemonEncontrado = Task.Run(() => pokemonService.GetPokemon(urlPokemonEncontrado)).Result;
+
+                int danosSofridos = random.Next(5, 50);
+
+                if(pokemonEncontrado is null)
+                {
+                    Console.WriteLine("Nenhum pokemon Encontrado, continue procurando");
+                    Console.WriteLine("Pressione qualquer tecla para voltar.");
+                    Console.ReadLine();
+                    return;
+                }
+
+                Console.WriteLine($"Voce encontrou um {pokemonEncontrado.Name} !!!!");
+
+                if (Saude - danosSofridos <= 0)
+                {
+                    Console.WriteLine($"Oh nao o {Name} foi derrotado");
+                    Console.WriteLine("Pressione qualquer tecla para voltar.");
+                    Console.ReadLine();
+                }
+                else
+                {
+                    Console.WriteLine($"Isso ai o {Name} vence a luta contra o {pokemonEncontrado.Name}");
+                }
+
+                int modificadorHumor = random.Next(5, 50);
+                int modificadorFome = random.Next(3, 15);
+
+                Console.WriteLine($"Danos na Saude = {Saude} -- {Saude - danosSofridos}");
+                Console.WriteLine($"Perca no Humor = {Humor} -- {Humor - modificadorHumor}");
+                Console.WriteLine($"Aumento da Fome =  {Fome} ++ {Fome + modificadorFome}");
+
+                Saude -= danosSofridos;
+                Humor -= modificadorHumor;
+                Fome += modificadorFome;
+
+                if (Saude < 0) Saude = 0;
+
+                if (Humor < 0) Humor = 0;
+
+                if (Fome > 100) Fome = 100;
+
                 Console.WriteLine("Pressione qualquer tecla para voltar.");
                 Console.ReadLine();
             }
-            else
+            catch(Exception e)
             {
-                Console.WriteLine($"Isso ai o {Name} vence a luta contra o {pokemonEncontrado.Name}");
+                Console.WriteLine("Ocorreu um problema voce sera redirecionado ao menu");
+                return;
             }
-
-            int modificadorHumor = random.Next(5, 50);
-            int modificadorFome = random.Next(3, 15);
-
-            Console.WriteLine($"Danos na Saude = {Saude} -- {Saude - danosSofridos}");
-            Console.WriteLine($"Perca no Humor = {Humor} -- {Humor - modificadorHumor}");
-            Console.WriteLine($"Aumento da Fome =  {Fome} ++ {Fome + modificadorFome}");
-
-            Saude -= danosSofridos;
-            Humor -= modificadorHumor;
-            Fome += modificadorFome;
-
-            if (Saude < 0) Saude = 0;
-            
-            if(Humor < 0) Humor = 0;
-
-            if (Fome > 100) Fome = 100;
-
-            Console.WriteLine("Pressione qualquer tecla para voltar.");
-            Console.ReadLine();
-        }
+        } 
     }
 }
