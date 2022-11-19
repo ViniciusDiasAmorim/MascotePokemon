@@ -34,15 +34,7 @@ namespace PokeApi.Model
                 Console.WriteLine($"Ganho na Saude = {Saude} ++ {Saude + modificador}");
                 Console.WriteLine($"A saude do {Name} eh 100");
             }
-            if(Humor + modificador < 100)
-            {
-                Console.WriteLine($"Ganho no Humor = {Humor} ++ {Humor + modificador}");
-            }
-            else
-            {
-                Console.WriteLine($"Ganho no Humor = {Humor} ++ {Saude + modificador}");
-                Console.WriteLine($"O humor do {Name} eh 100");
-            }
+          
             if(Fome - modificador > 0)
             {
                 Console.WriteLine($"Diminuiçao na Fome =  {Fome} -- {Fome - modificador}");
@@ -54,21 +46,12 @@ namespace PokeApi.Model
             }
 
             Saude += modificador;
-            Humor += modificador;
             Fome -= modificador;
 
-            if (Saude > 100)
-            {
-                Saude = 100;
-            }
-            if (Humor > 100)
-            {
-                Humor = 100;
-            }
-            if (Fome < 0)
-            {
-                Fome = 0;
-            }
+            if (Saude > 100) Saude = 100;
+                   
+            if (Fome < 0) Fome = 0;
+            
 
             Console.WriteLine("Pressione qualquer tecla para voltar.");
             Console.ReadLine();
@@ -101,6 +84,9 @@ namespace PokeApi.Model
 
             Humor += modificador;
             Fome += modificador;
+
+            if(Humor > 100) Humor = 100;
+            if(Fome > 100) Fome = 100;
 
             Console.WriteLine("Pressione qualquer tecla para voltar.");
             Console.ReadLine();
@@ -143,6 +129,12 @@ namespace PokeApi.Model
             Saude -= danosSofridos;
             Humor -= modificadorHumor;
             Fome += modificadorFome;
+
+            if (Saude < 0) Saude = 0;
+            
+            if(Humor < 0) Humor = 0;
+
+            if (Fome > 100) Fome = 100;
 
             Console.WriteLine("Pressione qualquer tecla para voltar.");
             Console.ReadLine();

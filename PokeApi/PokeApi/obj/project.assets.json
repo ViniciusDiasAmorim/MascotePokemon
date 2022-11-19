@@ -292,11 +292,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\User\\Desktop\\Programação\\0.0 Portfolio\\PokeApi\\PokeApi\\PokeApi\\PokeApi.csproj",
+      "projectUniqueName": "C:\\Users\\User\\Desktop\\Programação\\0.0 Portfolio\\MascotePokemon\\PokeApi\\PokeApi\\PokeApi.csproj",
       "projectName": "PokeApi",
-      "projectPath": "C:\\Users\\User\\Desktop\\Programação\\0.0 Portfolio\\PokeApi\\PokeApi\\PokeApi\\PokeApi.csproj",
+      "projectPath": "C:\\Users\\User\\Desktop\\Programação\\0.0 Portfolio\\MascotePokemon\\PokeApi\\PokeApi\\PokeApi.csproj",
       "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\User\\Desktop\\Programação\\0.0 Portfolio\\PokeApi\\PokeApi\\PokeApi\\obj\\",
+      "outputPath": "C:\\Users\\User\\Desktop\\Programação\\0.0 Portfolio\\MascotePokemon\\PokeApi\\PokeApi\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
