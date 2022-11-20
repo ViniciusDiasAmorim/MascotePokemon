@@ -75,7 +75,7 @@ namespace PokeApi.View
             Console.WriteLine("3 - Para voltar aos Pokemons.");
             Console.WriteLine();
             Console.WriteLine("0 - Para voltar ao menu principal.");
-            
+
             return pokemon;
         }
         public void InformacaoDoPokemonView(Pokemon pokemon)
@@ -88,15 +88,15 @@ namespace PokeApi.View
             Console.WriteLine($"Habilidades:");
             foreach (var p in pokemon.Abilities)
             {
-                if (pokemon.Abilities[0] == p) 
+                if (pokemon.Abilities[0] == p)
                     Console.Write($"{p.AbilityAbility.Name} |");
 
-                else 
+                else
                     Console.Write($" {p.AbilityAbility.Name} |");
             }
             Console.WriteLine();
             Console.WriteLine("Tipos do Pokemon: ");
-            foreach( var p in pokemon.Types)
+            foreach (var p in pokemon.Types)
             {
                 Console.WriteLine($"{p.Type.Name}");
             }
@@ -146,7 +146,7 @@ namespace PokeApi.View
             Console.WriteLine("--------------------Seus Pokemons--------------------");
 
             int i = 0;
-            foreach(var p in pokemonCapturados)
+            foreach (var p in pokemonCapturados)
             {
                 i++;
                 Console.WriteLine($"{i} - {p.Name}");

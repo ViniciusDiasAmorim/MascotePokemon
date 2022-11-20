@@ -150,7 +150,7 @@ namespace PokeApi.Model
                 Console.WriteLine("Pressione qualquer tecla para voltar.");
                 Console.ReadLine();
             }
-            catch(Exception e)
+            catch
             {
                 Console.WriteLine("Ocorreu um problema voce sera redirecionado ao menu");
                 return;

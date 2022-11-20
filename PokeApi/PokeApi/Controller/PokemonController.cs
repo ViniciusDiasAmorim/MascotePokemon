@@ -171,7 +171,6 @@ namespace PokeApi.Controller
             pokemonView.AdocaoDoPokemonView(pokemonCapturado);
 
             return pokemonCapturado;
-
         }
     }
 }
