@@ -127,7 +127,7 @@ namespace PokeApi.Model
                 }
                 else
                 {
-                    Console.WriteLine($"Isso ai o {Name} vence a luta contra o {pokemonEncontrado.Name}");
+                    Console.WriteLine($"Isso ai o {Name} venceu a luta contra o {pokemonEncontrado.Name}");
                 }
 
                 int modificadorHumor = random.Next(5, 50);

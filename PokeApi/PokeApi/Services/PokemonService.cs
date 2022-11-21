@@ -1,7 +1,6 @@
 ﻿using Newtonsoft.Json;
 using PokeApi.Model;
 using PokeApi.Models;
-using System.Collections.Generic;
 
 namespace PokeApi.Services
 {
